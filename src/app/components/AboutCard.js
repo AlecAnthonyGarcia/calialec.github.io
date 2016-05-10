@@ -81,17 +81,20 @@ class AboutCard extends React.Component {
       
       <List>
       <ListItem
+        leftIcon={<FontIcon className="icon icon-github"/>}
         primaryText="GitHub"
         secondaryText="https://github.com/CaliAlec"
         onTouchTap={()=>window.open("https://github.com/CaliAlec")}
       />
 
       <ListItem
+        leftIcon={<FontIcon className="icon icon-linkedin"/>}
         primaryText="LinkedIn"
         secondaryText="https://www.linkedin.com/in/AlecAnthonyGarcia"
         onTouchTap={()=>window.open("https://www.linkedin.com/in/AlecAnthonyGarcia")}
       />
       <ListItem
+        leftIcon={<FontIcon className="icon icon-twitter"/>}
         primaryText="Twitter"
         secondaryText="https://twitter.com/CaliAlec"
         onTouchTap={()=>window.open("https://twitter.com/CaliAlec")}
