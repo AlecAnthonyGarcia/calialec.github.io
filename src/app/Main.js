@@ -1,4 +1,6 @@
 import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import {Tabs,Tab} from 'material-ui/Tabs';
 import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -24,6 +26,18 @@ class Main extends React.Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
+        <AppBar
+          title="Alec Garcia"
+          zDepth={0}
+        />
+        <Tabs>
+        <Tab
+          label="PORTFOLIO">
+        </Tab>
+        <Tab
+          label="ABOUT">
+        </Tab>
+        </Tabs>
         </div>
       </MuiThemeProvider>
     );
