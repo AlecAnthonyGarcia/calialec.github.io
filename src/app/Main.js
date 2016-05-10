@@ -5,6 +5,8 @@ import {deepOrange500} from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+import AboutCard from './components/AboutCard';
+
 const styles = {
 };
 
@@ -36,6 +38,7 @@ class Main extends React.Component {
         </Tab>
         <Tab
           label="ABOUT">
+          <AboutCard/>
         </Tab>
         </Tabs>
         </div>
