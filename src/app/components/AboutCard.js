@@ -42,6 +42,7 @@ class AboutCard extends React.Component {
         leftIcon={<DocumentIcon color={indigo500} />}
         primaryText="Resume"
         secondaryText="View PDF"
+        onTouchTap={()=>window.open("resume.pdf")}
       />
       </List>
       
