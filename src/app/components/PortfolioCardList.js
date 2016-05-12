@@ -17,6 +17,7 @@ const styles = {
 
 const personalProjectsData = [
   {
+    key: 'impulse',
     headerTitle: 'Impulse',
     headerSubtitle: 'Android Application',
     headerAvatar: 'images/impulse/ic_impulse.png',
@@ -25,6 +26,7 @@ const personalProjectsData = [
     infoRoute: '/impulse'
   },
   {
+    key: 'still-alive',
     headerTitle: 'Still Alive',
     headerSubtitle: 'Android Application',
     headerAvatar: 'images/still-alive/ic_still_alive.png',
@@ -36,6 +38,7 @@ const personalProjectsData = [
 
 const hackathonProjectsData = [
   {
+    key: 'entangled',
     headerTitle: 'Entangled',
     headerSubtitle: 'Android Watch Face',
     headerAvatar: 'images/entangled/ic_entangled.png',
@@ -44,6 +47,7 @@ const hackathonProjectsData = [
     infoRoute: '/entangled'
   },
   {
+    key: 'fliiip',
     headerTitle: 'fliiip',
     headerSubtitle: 'Android Application',
     headerAvatar: 'images/fliiip/ic_fliiip.png',
@@ -55,6 +59,7 @@ const hackathonProjectsData = [
 
 const workProjectsData = [
   {
+    key: 'screenpop',
     headerTitle: 'ScreenPop Lockscreen Messenger',
     headerSubtitle: 'Android Application',
     headerAvatar: 'images/screenpop/ic_screenpop.png',
@@ -63,6 +68,7 @@ const workProjectsData = [
     infoRoute: '/screenpop'
   },
   {
+    key: 'locket',
     headerTitle: 'Locket Lock Screen',
     headerSubtitle: 'Android Application',
     headerAvatar: 'images/locket/ic_locket.png',
@@ -88,6 +94,7 @@ class PortfolioCardList extends React.Component {
       
       {personalProjectsData.map((card) => (
         <PortfolioCard
+          key={card.key}
           headerTitle={card.headerTitle}
           headerSubtitle={card.headerSubtitle}
           headerAvatar={card.headerAvatar}
@@ -101,6 +108,7 @@ class PortfolioCardList extends React.Component {
       
       {hackathonProjectsData.map((card) => (
         <PortfolioCard
+          key={card.key}
           headerTitle={card.headerTitle}
           headerSubtitle={card.headerSubtitle}
           headerAvatar={card.headerAvatar}
@@ -114,6 +122,7 @@ class PortfolioCardList extends React.Component {
       
       {workProjectsData.map((card) => (
         <PortfolioCard
+          key={card.key}
           headerTitle={card.headerTitle}
           headerSubtitle={card.headerSubtitle}
           headerAvatar={card.headerAvatar}
