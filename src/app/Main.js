@@ -31,6 +31,7 @@ class Main extends React.Component {
         <div>
         <AppBar
           title="Alec Garcia"
+          showMenuIconButton={false}
           zDepth={0}
         />
         <Tabs>
