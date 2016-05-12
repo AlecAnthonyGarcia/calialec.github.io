@@ -15,7 +15,8 @@ const styles = {
     maxWidth: '344px',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: '10px'
+    marginTop: '10px',
+    marginBottom: '10px'
   }
 };
 
