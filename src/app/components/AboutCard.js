@@ -100,6 +100,12 @@ class AboutCard extends React.Component {
         secondaryText="https://twitter.com/CaliAlec"
         onTouchTap={()=>window.open("https://twitter.com/CaliAlec")}
       />
+      <ListItem
+        leftIcon={<FontIcon className="icon icon-facebook"/>}
+        primaryText="Facebook"
+        secondaryText="https://www.facebook.com/alec.garcia.505"
+        onTouchTap={()=>window.open("https://www.facebook.com/alec.garcia.505")}
+      />
       </List>
       </Card>
     );
