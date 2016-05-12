@@ -1,5 +1,7 @@
 import React from 'react';
-import {Card, CardHeader, CardMedia, CardText} from 'material-ui/Card';
+import {browserHistory} from 'react-router';
+import {Card, CardActions, CardHeader, CardMedia, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
   portfolioCard: {
@@ -22,7 +24,8 @@ class PortfolioCard extends React.Component {
       headerSubtitle,
       headerAvatar,
       image,
-      text
+      text,
+      infoRoute
     } = this.props;
 
     return (
@@ -41,7 +44,11 @@ class PortfolioCard extends React.Component {
       <CardText>
         {text}
       </CardText>
-
+      
+      <CardActions>
+        <FlatButton label="LEARN MORE" onClick={()=>browserHistory.push(infoRoute)} />
+      </CardActions>
+      
     </Card>
     );
   }
