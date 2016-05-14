@@ -58,54 +58,75 @@ const imageArray = [
   }
 ];
 
-const optionsList = (
-  <div>
-  <List>
-    <ListItem
-      leftIcon={<ActionHome color={indigo500} />}
-      primaryText="Website"
-      secondaryText="http://getlocket.com"
-      onTouchTap={()=>window.open("http://getlocket.com")}
-    />
-  </List>
-  
-  <Divider inset={true} />
-  
-  <List>
-    <ListItem
-      leftIcon={<FontIcon className="icon icon-android"/>}
-      primaryText="Archived Google Play Listing"
-      secondaryText="https://web.archive.org/web/20151025190509/https://play.google.com/store/apps/details?id=com.locket.matterhorn"
-      onTouchTap={()=>window.open("https://web.archive.org/web/20151025190509/https://play.google.com/store/apps/details?id=com.locket.matterhorn")}
-    />
-  </List>
-  
-  <Divider inset={true} />
-  
-  <List>
-    <ListItem
-      leftIcon={<FontIcon className="icon icon-link"/>}
-      primaryText="TechCrunch Article"
-      secondaryText="http://techcrunch.com/2013/11/19/tyra-banks-invests-in-locket-the-app-that-brings-ads-and-other-content-to-android-lockscreens/"
-      onTouchTap={()=>window.open("http://techcrunch.com/2013/11/19/tyra-banks-invests-in-locket-the-app-that-brings-ads-and-other-content-to-android-lockscreens/")}
-    />
-  </List>
-  </div>
-);
-
 function onBackPressed() {
+  // track the back button click
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Back Button',
+    eventLabel: window.location.pathname
+  });
   browserHistory.push('/');
 }
-
 class Locket extends React.Component {
   constructor(props, context) {
     super(props, context);
     
     this.state = {
     };
+    
+    this.listItem = [];
+  }
+
+  onListItemTouchTap(index) {
+    // track the list item clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card List Item',
+      eventAction: this.listItem[index].props.primaryText,
+      eventLabel: this.listItem[index].props.secondaryText
+    });
+    window.open(this.listItem[index].props.secondaryText);
   }
 
   render() {
+    
+    const optionsList = (
+      <div>
+      <List>
+        <ListItem
+          leftIcon={<ActionHome color={indigo500} />}
+          primaryText="Website"
+          secondaryText="http://getlocket.com"
+          ref={(ref) => this.listItem.push(ref)}
+          onTouchTap={()=>this.onListItemTouchTap(0)}
+        />
+      </List>
+      
+      <Divider inset={true} />
+      
+      <List>
+        <ListItem
+          leftIcon={<FontIcon className="icon icon-android"/>}
+          primaryText="Archived Google Play Listing"
+          secondaryText="https://web.archive.org/web/20151025190509/https://play.google.com/store/apps/details?id=com.locket.matterhorn"
+          ref={(ref) => this.listItem.push(ref)}
+          onTouchTap={()=>this.onListItemTouchTap(1)}
+        />
+      </List>
+      
+      <Divider inset={true} />
+      
+      <List>
+        <ListItem
+          leftIcon={<FontIcon className="icon icon-link"/>}
+          primaryText="TechCrunch Article"
+          secondaryText="http://techcrunch.com/2013/11/19/tyra-banks-invests-in-locket-the-app-that-brings-ads-and-other-content-to-android-lockscreens/"
+          ref={(ref) => this.listItem.push(ref)}
+          onTouchTap={()=>this.onListItemTouchTap(2)}
+        />
+      </List>
+      </div>
+    );
     
     const description = (
       <div>

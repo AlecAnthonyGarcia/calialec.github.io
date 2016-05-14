@@ -30,20 +30,13 @@ const imageArray = [
   }
 ];
 
-const optionsList = (
-  <div>
-  <List>
-    <ListItem
-    leftIcon={<FontIcon className="icon icon-link"/>}
-    primaryText="Devpost Submission"
-    secondaryText="http://devpost.com/software/fliiip"
-    onTouchTap={()=>window.open("http://devpost.com/software/fliiip")}
-    />
-  </List>
-  </div>
-);
-
 function onBackPressed() {
+  // track the back button click
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Back Button',
+    eventLabel: window.location.pathname
+  });
   browserHistory.push('/');
 }
 
@@ -53,9 +46,36 @@ class Fliiip extends React.Component {
     
     this.state = {
     };
+    
+    this.listItem = [];
+  }
+  
+  onListItemTouchTap(index) {
+    // track the list item clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card List Item',
+      eventAction: this.listItem[index].props.primaryText,
+      eventLabel: this.listItem[index].props.secondaryText
+    });
+    window.open(this.listItem[index].props.secondaryText);
   }
 
   render() {
+    
+    const optionsList = (
+      <div>
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-link"/>}
+            primaryText="Devpost Submission"
+            secondaryText="http://devpost.com/software/fliiip"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(0)}
+            />
+        </List>
+      </div>
+    );
     
     const description = (
       <div>

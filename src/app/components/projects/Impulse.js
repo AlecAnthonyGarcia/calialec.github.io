@@ -53,31 +53,13 @@ const imageArray = [
   }
 ];
 
-const optionsList = (
-  <div>
-  <List>
-    <ListItem
-      leftIcon={<ActionHome color={indigo500} />}
-      primaryText="Website"
-      secondaryText="http://impulse.life"
-      onTouchTap={()=>window.open("http://impulse.life")}
-    />
-  </List>
-  
-  <Divider inset={true} />
-  
-  <List>
-    <ListItem
-      leftIcon={<FontIcon className="icon icon-android"/>}
-      primaryText="Google Play Store Listing"
-      secondaryText="https://play.google.com/store/apps/details?id=life.impulse.impulse"
-      onTouchTap={()=>window.open("https://play.google.com/store/apps/details?id=life.impulse.impulse")}
-    />
-  </List>
-  </div>
-);
-
 function onBackPressed() {
+  // track the back button click
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Back Button',
+    eventLabel: window.location.pathname
+  });
   browserHistory.push('/');
 }
 
@@ -87,9 +69,48 @@ class Impulse extends React.Component {
     
     this.state = {
     };
+    
+    this.listItem = [];
+  }
+  
+  onListItemTouchTap(index) {
+    // track the list item clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card List Item',
+      eventAction: this.listItem[index].props.primaryText,
+      eventLabel: this.listItem[index].props.secondaryText
+    });
+    window.open(this.listItem[index].props.secondaryText);
   }
 
   render() {
+    
+    const optionsList = (
+      <div>
+        <List>
+          <ListItem
+            leftIcon={<ActionHome color={indigo500} />}
+            primaryText="Website"
+            secondaryText="http://impulse.life"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(0)}
+            />
+        </List>
+        
+        <Divider inset={true} />
+        
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-android"/>}
+            primaryText="Google Play Store Listing"
+            secondaryText="https://play.google.com/store/apps/details?id=life.impulse.impulse"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(1)}
+            />
+        </List>
+      </div>
+    );
     
     const description = (
       <div>

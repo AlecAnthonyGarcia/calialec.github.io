@@ -17,6 +17,17 @@ class PortfolioCard extends React.Component {
     };
   }
 
+  onCardActionButtonClick(route) {
+    // track the learn more button click
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card',
+      eventAction: 'LEARN MORE',
+      eventLabel: route
+    });
+    browserHistory.push(route);
+  }
+  
   render() {
 
     const {
@@ -46,7 +57,10 @@ class PortfolioCard extends React.Component {
       </CardText>
       
       <CardActions>
-        <FlatButton label="LEARN MORE" onClick={()=>browserHistory.push(infoRoute)} />
+        <FlatButton
+          label="LEARN MORE"
+          onClick={()=>this.onCardActionButtonClick(infoRoute)}
+        />
       </CardActions>
       
     </Card>

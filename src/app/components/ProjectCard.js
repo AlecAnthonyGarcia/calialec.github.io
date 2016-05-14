@@ -38,6 +38,13 @@ class ProjectCard extends React.Component {
   showImageGallery(imageIndex) {
     var itself = this;
     
+    // track image gallery clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card Image Item',
+      eventLabel: itself.props.imageArray[imageIndex.index].image
+    });
+    
     this.getPswpElement(function(pswpElement) {
       var slides = [];
       

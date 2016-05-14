@@ -24,6 +24,15 @@ class Main extends React.Component {
     this.state = {
     };
   }
+  
+  onTabActive(tab) {
+    // track tab clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Tab',
+      eventLabel: tab.props.label
+    });
+  }
 
   render() {
     return (
@@ -36,11 +45,15 @@ class Main extends React.Component {
         />
         <Tabs>
         <Tab
-          label="PORTFOLIO">
+          label="PORTFOLIO"
+          onActive={this.onTabActive}
+          >
           <PortfolioCardList/>
         </Tab>
         <Tab
-          label="ABOUT">
+          label="ABOUT"
+          onActive={this.onTabActive}
+          >
           <AboutCard/>
         </Tab>
         </Tabs>

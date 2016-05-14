@@ -67,46 +67,13 @@ const imageArray = [
   }
 ];
 
-const optionsList = (
-  <div>
-  <List>
-    <ListItem
-      leftIcon={<FontIcon className="icon icon-android"/>}
-      primaryText="Archived Google Play Store Listing"
-      secondaryText="https://web.archive.org/web/20151014022914/https://play.google.com/store/apps/details?id=com.screenpop.android"
-      onTouchTap={()=>window.open("https://web.archive.org/web/20151014022914/https://play.google.com/store/apps/details?id=com.screenpop.android")}
-      />
-  </List>
-  <Divider inset={true} />
-  <List>
-    <ListItem
-      leftIcon={<FontIcon className="icon icon-link"/>}
-      primaryText="TechCrunch Article"
-      secondaryText="http://techcrunch.com/2015/02/10/screenpop-backed-by-3-2-million-lets-you-message-friends-from-your-phones-lockscreen/"
-      onTouchTap={()=>window.open("http://techcrunch.com/2015/02/10/screenpop-backed-by-3-2-million-lets-you-message-friends-from-your-phones-lockscreen/")}
-    />
-  </List>
-  <Divider inset={true} />
-    <List>
-      <ListItem
-        leftIcon={<FontIcon className="icon icon-youtube"/>}
-        primaryText="YouTube Marketing Video"
-        secondaryText="https://www.youtube.com/watch?v=7Llv-dKioGY"
-        onTouchTap={()=>window.open("https://www.youtube.com/watch?v=7Llv-dKioGY")}
-      />
-    </List>
-    <List>
-      <ListItem
-        leftIcon={<FontIcon className="icon icon-youtube"/>}
-        primaryText="YouTube App Tutorial Video"
-        secondaryText="https://www.youtube.com/watch?v=h7Ri1uMYbEw"
-        onTouchTap={()=>window.open("https://www.youtube.com/watch?v=h7Ri1uMYbEw")}
-      />
-    </List>
-  </div>
-);
-
 function onBackPressed() {
+  // track the back button click
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Back Button',
+    eventLabel: window.location.pathname
+  });
   browserHistory.push('/');
 }
 
@@ -116,10 +83,66 @@ class ScreenPop extends React.Component {
     
     this.state = {
     };
+    
+    this.listItem = [];
+  }
+  
+  onListItemTouchTap(index) {
+    // track the list item clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card List Item',
+      eventAction: this.listItem[index].props.primaryText,
+      eventLabel: this.listItem[index].props.secondaryText
+    });
+    window.open(this.listItem[index].props.secondaryText);
   }
 
   render() {
     
+    const optionsList = (
+      <div>
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-android"/>}
+            primaryText="Archived Google Play Store Listing"
+            secondaryText="https://web.archive.org/web/20151014022914/https://play.google.com/store/apps/details?id=com.screenpop.android"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(0)}
+            />
+        </List>
+        <Divider inset={true} />
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-link"/>}
+            primaryText="TechCrunch Article"
+            secondaryText="http://techcrunch.com/2015/02/10/screenpop-backed-by-3-2-million-lets-you-message-friends-from-your-phones-lockscreen/"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(1)}
+            />
+        </List>
+        <Divider inset={true} />
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-youtube"/>}
+            primaryText="YouTube Marketing Video"
+            secondaryText="https://www.youtube.com/watch?v=7Llv-dKioGY"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(2)}
+            />
+        </List>
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-youtube"/>}
+            primaryText="YouTube App Tutorial Video"
+            secondaryText="https://www.youtube.com/watch?v=h7Ri1uMYbEw"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(3)}
+            />
+        </List>
+      </div>
+    );
+
     const description = (
       <div>
         ScreenPop allowed you to send pictures to your friend's lock screens. When you woke your phone up, the ScreenPop lock screen was shown.

@@ -26,6 +26,23 @@ class AboutCard extends React.Component {
     
     this.state = {
     };
+    
+    this.listItem = [];
+  }
+  
+  onListItemTouchTap(index, location) {
+    // track the list item clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'About Card List Item',
+      eventAction: this.listItem[index].props.primaryText,
+      eventLabel: this.listItem[index].props.secondaryText
+    });
+    if(location) {
+      window.open(location)
+    } else {
+      window.open(this.listItem[index].props.secondaryText);
+    }    
   }
 
   render() {
@@ -42,7 +59,8 @@ class AboutCard extends React.Component {
         leftIcon={<DocumentIcon color={indigo500} />}
         primaryText="Resume"
         secondaryText="View PDF"
-        onTouchTap={()=>window.open("resume.pdf")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(0, "resume.pdf")}
       />
       </List>
       
@@ -53,7 +71,8 @@ class AboutCard extends React.Component {
         leftIcon={<PhoneIcon color={indigo500} />}
         primaryText="(805) 824 - 4646"
         secondaryText="Mobile"
-        onTouchTap={()=>window.open("tel:8058244646")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(1, "tel:8058244646")}
       />
       </List>
       
@@ -64,7 +83,8 @@ class AboutCard extends React.Component {
         leftIcon={<EmailIcon color={indigo500} />}
         primaryText="AlecAnthonyGarcia@gmail.com"
         secondaryText="Personal"
-        onTouchTap={()=>window.open("mailto:AlecAnthonyGarcia@gmail.com")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(2, "mailto:AlecAnthonyGarcia@gmail.com")}
       />
       </List>
       
@@ -86,26 +106,30 @@ class AboutCard extends React.Component {
         leftIcon={<FontIcon className="icon icon-github"/>}
         primaryText="GitHub"
         secondaryText="https://github.com/CaliAlec"
-        onTouchTap={()=>window.open("https://github.com/CaliAlec")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(3)}
       />
 
       <ListItem
         leftIcon={<FontIcon className="icon icon-linkedin"/>}
         primaryText="LinkedIn"
         secondaryText="https://www.linkedin.com/in/AlecAnthonyGarcia"
-        onTouchTap={()=>window.open("https://www.linkedin.com/in/AlecAnthonyGarcia")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(4)}
       />
       <ListItem
         leftIcon={<FontIcon className="icon icon-twitter"/>}
         primaryText="Twitter"
         secondaryText="https://twitter.com/CaliAlec"
-        onTouchTap={()=>window.open("https://twitter.com/CaliAlec")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(5)}
       />
       <ListItem
         leftIcon={<FontIcon className="icon icon-facebook"/>}
         primaryText="Facebook"
         secondaryText="https://www.facebook.com/alec.garcia.505"
-        onTouchTap={()=>window.open("https://www.facebook.com/alec.garcia.505")}
+        ref={(ref) => this.listItem.push(ref)}
+        onTouchTap={()=>this.onListItemTouchTap(6)}
       />
       </List>
       </Card>

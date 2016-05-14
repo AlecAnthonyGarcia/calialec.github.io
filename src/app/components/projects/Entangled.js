@@ -47,37 +47,13 @@ const imageArray = [
   }
 ];
 
-const optionsList = (
-  <div>
-  <List>
-    <ListItem
-      leftIcon={<ActionHome color={indigo500} />}
-      primaryText="Website"
-      secondaryText="http://EntangledApp.com/"
-      onTouchTap={()=>window.open("http://EntangledApp.com/")}
-    />
-  </List>
-  
-  <Divider inset={true} />
-  
-  <List>
-    <ListItem
-      leftIcon={<FontIcon className="icon icon-link"/>}
-      primaryText="TechCrunch Article"
-      secondaryText="http://techcrunch.com/2015/09/20/entangled-is-a-watch-app-to-fight-loneliness/"
-      onTouchTap={()=>window.open("http://techcrunch.com/2015/09/20/entangled-is-a-watch-app-to-fight-loneliness/")}
-    />
-    <ListItem
-    leftIcon={<FontIcon className="icon icon-link"/>}
-    primaryText="Devpost Submission"
-    secondaryText="http://devpost.com/software/entangled/"
-    onTouchTap={()=>window.open("http://devpost.com/software/entangled/")}
-    />
-  </List>
-  </div>
-);
-
 function onBackPressed() {
+  // track the back button click
+  ga('send', {
+    hitType: 'event',
+    eventCategory: 'Back Button',
+    eventLabel: window.location.pathname
+  });
   browserHistory.push('/');
 }
 
@@ -87,10 +63,56 @@ class Entangled extends React.Component {
     
     this.state = {
     };
+    
+    this.listItem = [];
+  }
+  
+  onListItemTouchTap(index) {
+    // track the list item clicks
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Portfolio Project Card List Item',
+      eventAction: this.listItem[index].props.primaryText,
+      eventLabel: this.listItem[index].props.secondaryText
+    });
+    window.open(this.listItem[index].props.secondaryText);
   }
 
   render() {
-    
+
+    const optionsList = (
+      <div>
+        <List>
+          <ListItem
+            leftIcon={<ActionHome color={indigo500} />}
+            primaryText="Website"
+            secondaryText="http://EntangledApp.com/"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(0)}
+            />
+        </List>
+        
+        <Divider inset={true} />
+        
+        <List>
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-link"/>}
+            primaryText="TechCrunch Article"
+            secondaryText="http://techcrunch.com/2015/09/20/entangled-is-a-watch-app-to-fight-loneliness/"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(1)}
+            />
+          <ListItem
+            leftIcon={<FontIcon className="icon icon-link"/>}
+            primaryText="Devpost Submission"
+            secondaryText="http://devpost.com/software/entangled/"
+            ref={(ref) => this.listItem.push(ref)}
+            onTouchTap={()=>this.onListItemTouchTap(2)}
+            />
+        </List>
+      </div>
+    );
+
     const description = (
       <div>
         My good friend Freddie Iboy and I worked on Entangled at TechCrunch Disrupt SF 2015. I developed the watch face
