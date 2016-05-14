@@ -54,6 +54,21 @@ class AboutCard extends React.Component {
       <img src="https://avatars0.githubusercontent.com/CaliAlec" />
       </CardMedia>
       
+      <CardText>
+        Hey, I'm Alec, a developer based in the Bay Area.
+        <br/><br/>
+          I was born in California but grew up in Colorado. I moved back to California when I started high school.
+          In high school, I participated in the FIRST Robotics Competition.
+          <br/><br/>
+          In college, I pursued a Computer Science Degree, but I took a leave of absence during my sophomore year after receiving an
+          internship for white-hat hacking a startup called Locket. I was promoted to a full-time position and I worked at
+          Locket for 1.5 years.
+          <br/><br/>
+          Recently, Locket was acquired by Wish, so I spent the last year working on my own projects and I achieved an
+          Android Developer Nanodegree from Udacity.
+          Now, I'm excited to get back into the workforce and build awesome things.
+      </CardText>
+      
       <List>
       <ListItem
         leftIcon={<DocumentIcon color={indigo500} />}
