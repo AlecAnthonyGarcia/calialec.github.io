@@ -80,7 +80,7 @@ class Fliiip extends React.Component {
     const description = (
       <div>
         My good friend Freddie Iboy and I came in 4th place in the Heroku category and won $20,000 at the Salesforce $1 Million Hackathon with fliiip.
-        I developed the Android application and backend in Java which pings the Yelp API for nearby restaurants.
+        I developed the Android application and backend in Java which pings the Yelp API for nearby restaurants. Freddie designed and pitched.
         <p>
           Freddie and I wanted to build a product that answered the question: <i>"What should I eat today?"</i>
         </p>
