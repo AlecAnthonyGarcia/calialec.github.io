@@ -8,6 +8,7 @@ import Impulse from './components/projects/Impulse';
 import StillAlive from './components/projects/StillAlive';
 import Entangled from './components/projects/Entangled';
 import Fliiip from './components/projects/Fliiip';
+import Waggly from './components/projects/Waggly';
 import ScreenPop from './components/projects/ScreenPop';
 import Locket from './components/projects/Locket';
 
@@ -26,6 +27,7 @@ ReactDOM.render(
     <Route path="/still-alive" component={StillAlive}/>
     <Route path="/entangled" component={Entangled}/>
     <Route path="/fliiip" component={Fliiip}/>
+    <Route path="/waggly" component={Waggly}/>
     <Route path="/screenpop" component={ScreenPop}/>
     <Route path="/locket" component={Locket}/>
   </Router>

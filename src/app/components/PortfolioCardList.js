@@ -54,6 +54,15 @@ const hackathonProjectsData = [
     image: 'images/fliiip/card_hero_fliiip.png',
     text: 'fliiip solves the paradox of choice when deciding what to eat by giving you 3 places to pick from.',
     infoRoute: '/fliiip'
+  },
+  {
+    key: 'waggly',
+    headerTitle: 'Waggly',
+    headerSubtitle: 'Android Application',
+    headerAvatar: 'images/waggly/ic_waggly.png',
+    image: 'images/waggly/card_hero_waggly.png',
+    text: 'Waggly makes it quick and simple to find playmates nearby for your dog.',
+    infoRoute: '/waggly'
   }
 ];
 
